@@ -1,12 +1,12 @@
 
 #include "push_swap.h"
 
-void insertionsortt(pile *a, pile *b, int argc)
+void insertionsort_print(pile *a, pile *b, int argc)
 {
     int i;
     while(!stack_vide(*a))
     {
-        i = getmin(*a);
+        i = get_min_index(*a);
         if(i <= argc / 2)
         {
             while(i > 1)
@@ -45,7 +45,7 @@ void insertionsort(pile *a, pile *b, int argc)
     int i;
     while(!stack_vide(*a))
     {
-        i = getmin(*a);
+        i = get_min_index(*a);
         if(i == argc)
             reverse_rotate(a, "");
         else if(i <= argc / 2)

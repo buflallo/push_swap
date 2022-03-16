@@ -29,7 +29,7 @@ int lst_size(pile b)
     return len;
 }
 
-int getminelem(pile a)
+int get_min_value(pile a)
 {
     int i;
     int s;

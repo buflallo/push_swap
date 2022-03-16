@@ -6,16 +6,13 @@ int main(int argc, char **argv)
 {
     pile a = new_pile();
     pile b = new_pile();
-    int *p;
 
-    p = (int *)malloc(200);
     argv_to_a(&a, argc, argv);
-    check_dup(a);
-    is_sorted(a,argc);
+    ft_check_error(a,argc);
     if(argc > 2 && argc < 30)
-        minisort(argc, &a, &b);
+        mini_sort(argc, &a, &b);
     else
-        bigsort(p, argv, &a, &b);
+        big_sort(argv, &a, &b);
     print_stack(a);
     // free(p);
     // ft_free(&a);

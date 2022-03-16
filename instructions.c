@@ -1,20 +1,23 @@
 
 #include "push_swap.h"
-pile    argv_to_a(pile *a, int argc, char **argv)
+void    argv_to_a(pile *a, int argc, char **argv)
 {
     while (argc > 1)
     {
         *a = push_stack(*a,ft_atoi(argv[argc - 1]));
         argc--;
     }
-    return (new_pile());
 }
 pile    swap_stack(pile st, char *str)
 {
+    int temp;
+
     if(st->i && st->next)
     {
-    swap(&st->i, &st->next->i);
-    ft_putstr(str);
+        temp = st->next->i;
+        st->next->i = st->i;
+        st->i = temp;
+        ft_putstr(str);
     }
     return(st);
 }
@@ -22,10 +25,14 @@ pile    swap_stack(pile st, char *str)
 pile    rotate_stack(pile st, char *str)
 {
     pile temp;
+    int temp_i;
+
     temp = st;
     while(temp != NULL && temp->next != NULL)
     {
-        swap(&temp->next->i, &temp->i);
+        temp_i = temp->next->i;
+        temp->next->i = temp->i;
+        temp->i = temp_i;
         temp = temp->next;
     }
     ft_putstr(str);

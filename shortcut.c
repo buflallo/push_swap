@@ -1,7 +1,7 @@
 
 #include "push_swap.h"
 
-void minisort(int argc, pile *a, pile *b)
+void mini_sort(int argc, pile *a, pile *b)
 {
     if(argc == 3)
         sorttwo(a);
@@ -13,36 +13,30 @@ void minisort(int argc, pile *a, pile *b)
         sortfive(a, b);
     else if(argc > 6 && argc < 30)
     {
-        insertionsortt(a, b, argc);
+        insertionsort_print(a, b, argc);
         push_back_to_a(a, b, argc - 1, 1);
     }
 }
-void bigsort(int *p, char **argv, pile *a, pile *b)
+void big_sort(char **argv, pile *a, pile *b)
 {
-        int i = 0;
-        p[0] = getminelem(*a) - 1;
-        if(count_argc(argv) > 350)
-        {
-            getcunk_hundred(new_pile(), count_argc(argv), p, argv);
-            while(i < 10)
-            {
-                push_chunks_to_b(a, b, argv, p);
-                i++;
-            }
-            insertionsortt(a, b, count_argc(argv));
-            push_back_to_a(a, b, count_argc(argv) - 1, 11);
-            pushmax(a, b, count_argc(argv));
-        }
+        int i;
+        int *p;
+        int t;
+
+        i = 0;
+        p = (int *)malloc(200);
+        p[0] = get_min_value(*a) - 1;
+        if(count_argc(argv) > 100)
+            t = 11;
         else
+            t = 4;
+        getcunk(new_pile(), count_argc(argv), p, argv);
+        while(i < t-1)
         {
-            getcunk(new_pile(), count_argc(argv), p, argv);
-            while(i < 3)
-            {
-                push_chunks_to_b(a, b, argv, p);
-                i++;
-            }
-            insertionsortt(a, b, count_argc(argv));
-            push_back_to_a(a, b, count_argc(argv) - 1, 4);
-            pushmax(a, b, count_argc(argv));
+            push_chunks_to_b(a, b, argv, p);
+            i++;
         }
+        insertionsort_print(a, b, count_argc(argv));
+        pushmax(a, b, count_argc(argv));
+        push_back_to_a(a, b, count_argc(argv) - 1, 11);
 }

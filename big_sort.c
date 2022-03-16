@@ -6,46 +6,26 @@ void   getcunk(pile cp, int argc, int *p, char **argv)
     pile b;
     int i;
     int j;
+    int k;
+    int div;
 
     b = new_pile();
     i = 0,
     j = 1;
-    cp = cpy_args(argc, argv);
+    argv_to_a(&cp, argc, argv);
     insertionsort(&cp, &b, argc);
     fill_a(&cp, &b ,argc);
-    while(i <= (argc-2))
-    {
-        if(i == (argc-2)/4)
-            p[j++] = cp->i;
-        else if (i == 2 * (argc-2)/4)
-            p[j++] = cp->i;
-        else if (i ==  3 * (argc-2)/4)
-            p[j++] = cp->i;
-        else if (i ==  (argc-2))
-            p[j++] = cp->i;
-        i++;
-        cp = cp->next;
-    }
-}
-
-void   getcunk_hundred(pile cp, int argc, int *p, char **argv)
-{
-    pile b;
-    int i;
-    int j;
-    int k;
-
-    i = 0;
-    j = 1;
-    cp = cpy_args(argc, argv);
-    insertionsort(&cp, &b, argc);
-    fill_a(&cp, &b ,argc);
+    div = lst_size(cp);
+    if (div > 100)
+        div = 11;
+    else
+        div = 4;
     while(i <= (argc-2))
     {
         k = 0;
-        while(k++ < 11)
+        while(k++ < div)
         {
-            if(i == k * (argc-2)/11)
+            if(i == k * (argc-2)/div)
                 p[j++] = cp->i;
         }
         i++;
@@ -58,16 +38,15 @@ void    push_chunks_to_b(pile *a, pile *b, char **argv, int *p)
     pile temp;
     int i;
     static int k;
-    int j;
 
     i = 0;
-    j = count_argc(argv);
-    temp = cpy_args(j, argv);
-    while(!stack_vide(temp) && i <= j)
+    temp = new_pile();
+    argv_to_a(&temp, count_argc(argv), argv);
+    while(!stack_vide(temp))
     {
         if(p[k + 1] && temp->i <= p[k + 1] && temp->i > p[k])
         {
-            pushchunk(a, b, j, temp);
+            pushchunk(a, b, count_argc(argv), temp);
         }
         temp = temp->next;
     }

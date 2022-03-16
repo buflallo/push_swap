@@ -16,15 +16,6 @@ void print_stack(pile st)
 	}
 }
 
-void    swap(int *y, int *z)
-{
-    int temp;
-
-    temp = *y;
-    *y = *z;
-    *z = temp;
-}
-
 void ft_putstr(char *str)
 {
     int i;

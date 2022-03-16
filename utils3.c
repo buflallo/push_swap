@@ -24,7 +24,7 @@ pile    pop_stack(pile st)
     return(st);
 }
 
-int getmin(pile a)
+int get_min_index(pile a)
 {
     int i;
     int s;
@@ -55,15 +55,4 @@ pile get_last(pile a)
         a = a->next;
     }
     return(a);
-}
-
-pile cpy_args(int argc, char **argv)
-{
-    pile cp = new_pile();
-    while (argc > 1)
-    {
-        cp = push_stack(cp,ft_atoi(argv[argc - 1]));
-        argc--;
-    }
-    return cp;
 }

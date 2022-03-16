@@ -7,32 +7,23 @@ void sorttwo(pile *a)
         reverse_rotate(a, "rra\n");
 }
 
-void    check_dup(pile a)
-{
-	int flag;
-	pile st;
-	while(!stack_vide(a))
-	{
-		st = a->next;
-		while(!stack_vide(st))
-		{
-			if(a->i == st->i)
-				ft_error();
-			st = st->next;
-		}
-		a = a->next;
-	}
-}
-
-void    is_sorted(pile a, int argc)
+void    ft_check_error(pile a, int argc)
 {
 	int	flag;
-
+	pile st;
+	
 	flag = 0;
 	while (!stack_vide(a) && a->next != NULL)
 	{
 		if (a->i > a->next->i)
 			flag = 1;
+		st = a->next;
+		while(!stack_vide(st))
+		{
+			if(a->i == st->i)
+				ft_print_error();
+			st = st->next;
+		}
 		a = a->next;
 	}
 	if (flag == 0)
@@ -41,34 +32,34 @@ void    is_sorted(pile a, int argc)
 
 int	ft_atoi(const char *str)
 {
-	long	i;
 	long	a;
 	long	k;
 
 	k = 0;
 	a = 1;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if ((str[i] == '-' || str[i] == '+') && (str[i + 1] >= '0' && str[i + 1] <= '9'))
+	if (!(*str))
+		ft_print_error();
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if ((*str == '-' || *str == '+') && (*(str + 1) >= '0' && *(str + 1) <= '9'))
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			a = -1;
-		i++;
+		str++;
 	}
-	while(str[i])
+	while(*str)
 	{
-		if(str[i] < '0' || str[i] > '9')
-			ft_error();
-		k = k * 10 + str[i] - '0';
-		i++;
+		if(*str < '0' || *str > '9')
+			ft_print_error();
+		k = k * 10 + *str - '0';
+		str++;
 	}
 	if((k > (long)2147483648 && a == -1) || (k > (long)2147483647 && a != -1))
-		ft_error();
+		ft_print_error();
 	return (k * a);
 }
 
-void    ft_error()
+void    ft_print_error()
 {
 	ft_putstr("error\n");
 	exit(0);	
