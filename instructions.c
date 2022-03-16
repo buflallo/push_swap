@@ -1,10 +1,21 @@
 
 #include "push_swap.h"
-
+pile    argv_to_a(pile *a, int argc, char **argv)
+{
+    while (argc > 1)
+    {
+        *a = push_stack(*a,ft_atoi(argv[argc - 1]));
+        argc--;
+    }
+    return (new_pile());
+}
 pile    swap_stack(pile st, char *str)
 {
+    if(st->i && st->next)
+    {
     swap(&st->i, &st->next->i);
     ft_putstr(str);
+    }
     return(st);
 }
 
@@ -30,59 +41,13 @@ void    push_to_stack(pile *a, pile *b, char *str)
     ft_putstr(str);
 }
 
-pile   prep_four(pile a)
+void    reverse_rotate(pile *a, char *str)
 {
-    int top;
-    int two;
-    int three;
-    int four;
+    pile last;
 
-    top = a->i;
-    two = a->next->i;
-    three = a->next->next->i;
-    four = a->next->next->next->i;
-    if(top > two && two < three && two < four)
-        a = swap_stack(a, "sa\n");
-    else if(three < top && three < two && three < four)
-    {
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
-    }
-    else if(four < top && four < two && four < three)
-    {
-        reverse_rotate(&a, "rra\n");
-    }
-    return(a);
-}
-
-pile    prep_five(pile a)
-{
-    int top;
-    int two;
-    int three;
-    int four;
-    int five;
-
-    top = a->i;
-    two = a->next->i;
-    three = a->next->next->i;
-    four = a->next->next->next->i;
-    five = a->next->next->next->next->i;
-    if(top > two && two < three && two < four && two < five)
-        a = swap_stack(a, "sa\n");
-    else if(three < top && three < two && three < four && three < five)
-    {
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
-    }
-    else if(four < top && four < two && four < three && four < five)
-    {
-        reverse_rotate(&a, "rra\n");
-        reverse_rotate(&a, "rra\n");
-    }
-    else if(five < top && five < two && five < three && five < four)
-    {
-        reverse_rotate(&a, "rra\n");
-    }
-    return(a);
+    last = get_last(*a);
+    last->next->next = *a;
+    *a = last->next;
+    last->next = NULL;
+    ft_putstr(str);
 }

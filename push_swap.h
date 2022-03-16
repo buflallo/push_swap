@@ -16,8 +16,10 @@
         false,
         true
     }Bool;
-
-pile    is_new_pile(void);
+void    sorttwo(pile *a);
+pile    sorttree(pile st);
+void    sortfour(pile *a, pile *b);
+void    sortfive(pile *a, pile *b);
 Bool	stack_vide(pile st);
 pile	push_stack(pile st, int x);
 int		ft_atoi(const char *str);
@@ -38,11 +40,23 @@ pile    get_last(pile a);
 void    reverse_rotate(pile *a, char *str);
 void    fill_a(pile *a, pile *b, int argc);
 void    getcunk(pile cp, int argc, int *p, char **argv);
-pile    cpy_stack(int argc, char **argv);
-void    extractchunk(pile *a,pile *b ,int *p,int argc, char **argv,int max, int min);
+pile    cpy_args(int argc, char **argv);
 int     getindex(pile a, int val);
 int     getminelem(pile a);
-void    push_bready(pile *a, pile *b);
-void    push_back_to_a(pile *a, pile *b);
+void    push_back_to_a(pile *a, pile *b, int argc, int div);
+int     getmaxindex(pile a);
+void    pushmax(pile *a, pile *b, int argc);
+void    insertionsortt(pile *a, pile *b, int argc);
+void    push_chunks_to_b(pile *a, pile *b, char **argv, int *p);
+int     lst_size(pile b);
+void    is_sorted(pile a, int argc);
+void    getcunk_hundred(pile cp, int argc, int *p, char **argv);
+void    ft_free(pile *a);
+void    minisort(int argc, pile *a, pile *b);
+void    bigsort(int *p, char **argv, pile *a, pile *b);
+pile    argv_to_a(pile *a, int argc, char **argv);
+int     count_argc(char **argv);
+void    ft_error();
+void    pushchunk(pile *a, pile *b, int j, pile temp);
 
 #endif

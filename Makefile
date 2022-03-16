@@ -1,10 +1,8 @@
-SRC =	atoi.c \
-		instructions.c Push_swap.c \
-		utils.c 
+SRC =	instructions.c Push_swap.c BigSort.c BigSortt.c \
+		utils.c error.c MiniSort.c utils2.c utils3.c shortcut.c
 
-OBJ =	atoi.o \
-		instructions.o Push_swap.o \
-		utils.o 
+OBJ =	instructions.o Push_swap.o BigSort.o BigSortt.o \
+		utils.o error.o MiniSort.o utils2.o utils3.o shortcut.o
 
 CC = gcc -c
 
