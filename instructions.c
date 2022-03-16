@@ -17,7 +17,7 @@ pile    swap_stack(pile st, char *str)
         temp = st->next->i;
         st->next->i = st->i;
         st->i = temp;
-        ft_putstr(str);
+        ft_putstr(str,1);
     }
     return(st);
 }
@@ -35,7 +35,7 @@ pile    rotate_stack(pile st, char *str)
         temp->i = temp_i;
         temp = temp->next;
     }
-    ft_putstr(str);
+    ft_putstr(str,1);
     return(st);
 }
 
@@ -45,7 +45,7 @@ void    push_to_stack(pile *a, pile *b, char *str)
     temp = (*a)->i;
     *a = pop_stack(*a);
     *b = push_stack(*b, temp);
-    ft_putstr(str);
+    ft_putstr(str,1);
 }
 
 void    reverse_rotate(pile *a, char *str)
@@ -56,5 +56,5 @@ void    reverse_rotate(pile *a, char *str)
     last->next->next = *a;
     *a = last->next;
     last->next = NULL;
-    ft_putstr(str);
+    ft_putstr(str,1);
 }

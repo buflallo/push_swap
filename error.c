@@ -61,6 +61,26 @@ int	ft_atoi(const char *str)
 
 void    ft_print_error()
 {
-	ft_putstr("error\n");
+	ft_putstr("error\n",2);
 	exit(0);	
+}
+
+
+void    ft_result(pile a)
+{
+	int	flag;
+	pile st;
+	
+	flag = 0;
+	while (!stack_vide(a) && a->next != NULL)
+	{
+		if (a->i > a->next->i)
+		{
+			printf("KO\n");
+			exit(0);
+		}
+		st = a->next;
+		a = a->next;
+	}
+	printf("OK\n");
 }

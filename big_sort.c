@@ -35,28 +35,58 @@ void   getcunk(pile cp, int argc, int *p, char **argv)
 
 void    push_chunks_to_b(pile *a, pile *b, char **argv, int *p)
 {
-    pile temp;
+    pile temp,temp1;
+    pile head;
     int i;
     static int k;
+    int hold1,hold2;
 
     i = 0;
-    temp = new_pile();
-    argv_to_a(&temp, count_argc(argv), argv);
-    while(!stack_vide(temp))
+    temp1 = *a;
+    while (!stack_vide(temp1))
     {
-        if(p[k + 1] && temp->i <= p[k + 1] && temp->i > p[k])
+        temp = temp1;
+        while(!stack_vide(temp))
         {
-            pushchunk(a, b, count_argc(argv), temp);
+            if(p[k + 1] && temp->i <= p[k + 1] && temp->i > p[k])
+            {    
+                hold1 = getindex(*a, temp->i);
+                temp = temp->next;
+                break;
+            }
+                // pushchunk(a, b, count_argc(argv), temp);
+            temp = temp->next;
         }
-        temp = temp->next;
+        pushchunk(a, b, count_argc(argv), hold1);
+        temp1 = temp1->next;
     }
+    
     k++;
 }
-void pushchunk(pile *a, pile *b, int j, pile temp)
+
+int get_closer(int hold1,int hold2)
+{
+    int actions1;
+    int actions2;
+    if (hold1 > 50)
+        actions1 = 100 - hold1; 
+    else
+        actions1 = hold1;
+    if (hold2 > 50)
+        actions2 = 100 - hold2; 
+    else
+        actions2 = hold2;
+    if (actions1 < actions2)
+        return hold1;
+    else
+        return hold2;
+}
+
+void pushchunk(pile *a, pile *b, int j, int val)
 {
     int i;
 
-    i = getindex(*a, temp->i);
+    i = val;
     if(i == j)
         reverse_rotate(a, "rra\n");
     else if(i <= (j - 1) / 2)

@@ -13,53 +13,70 @@ int main(int argc, char **argv)
         mini_sort(argc, &a, &b);
     else
         big_sort(argv, &a, &b);
-    print_stack(a);
+    // print_stack(a);
     // free(p);
     // ft_free(&a);
 }
 
-// int main(int argc, char **arv)
+// int main(int argc, char **argv)
 // {
 //     pile a = new_pile();
 //     pile b = new_pile();
-//     int i = 99, j = 1;
-//     int ko[100] = {792,596,556,677,754,816,-448,648,-237,408,963,29,680,516,820,947,376,668,717,508,-138,917,-219,941,-742,632,-301,-386,553,-758,439,-10,465,-326,-348,198,-771,270,-533,-145,-74,-197,66,-638,161,-164,429,-945,-939,-228,-279,834,527,736,-491,355,-675,-287,-970,-657,332,983,353,-231,142,-839,-224,507,870,-958,-548,-713,-143,794,54,-915,104,493,101,-15,-101,-768,-528,226,-523,534,-527,838,286,-293,225,-705,-959,656,-171,-303,-954,-764,-136,-621};
+//     char *str;
+//     int j = 0;
 
 
-//     while (i >= 0)
+//     argv_to_a(&a, argc, argv);
+//     str = get_next_line(0);
+//     while (str)
 //     {
-//         a = push_stack(a,ko[i]);
-//         i--;
-//     }
-//     while(j <= argc-1)
-//     {
-//         if (!strcmp(arv[j], "pa"))
-//         {
+//         if (!strcmp(str, "pa\n"))
 //             push_to_stack(&b,&a,"pa ");
-//         }
-//         if (!strcmp(arv[j], "pb"))
-//         {
+//         if (!strcmp(str, "pb\n"))
 //             push_to_stack(&a,&b,"pb ");
-//         }
-//         if (!strcmp(arv[j], "ra"))
-//         {
+//         if (!strcmp(str, "ra\n"))
 //             a = rotate_stack(a, "ra ");
-//         }
-//         if (!strcmp(arv[j], "rb"))
-//         {
+//         if (!strcmp(str, "rb\n"))
 //             b = rotate_stack(b, "rb ");
-//         }
-//         if (!strcmp(arv[j], "rra"))
-//         {
+//         if (!strcmp(str, "rra\n"))
 //             reverse_rotate(&a,"rra ");
-//         }
-//         if (!strcmp(arv[j], "rrb"))
-//         {
+//         if (!strcmp(str, "rrb\n"))
 //             reverse_rotate(&b,"rrb ");
-//         }
-//         j++;
+//         if (!strcmp(str, "sa\n"))
+//             a = swap_stack(a,"sa ");
+//         if (!strcmp(str, "sb\n"))
+//             b = swap_stack(b,"sb ");
+//         str = get_next_line(0);
 //     }
-//     print_stack(a);
-//     printf("sqc\n");
-//     print_stack(b);
+    // while(j <= argc-1)
+    // {
+    //     if (!strcmp(arv[j], "pa"))
+    //     {
+    //         push_to_stack(&b,&a,"pa ");
+    //     }
+    //     if (!strcmp(arv[j], "pb"))
+    //     {
+    //         push_to_stack(&a,&b,"pb ");
+    //     }
+    //     if (!strcmp(arv[j], "ra"))
+    //     {
+    //         a = rotate_stack(a, "ra ");
+    //     }
+    //     if (!strcmp(arv[j], "rb"))
+    //     {
+    //         b = rotate_stack(b, "rb ");
+    //     }
+    //     if (!strcmp(arv[j], "rra"))
+    //     {
+    //         reverse_rotate(&a,"rra ");
+    //     }
+    //     if (!strcmp(arv[j], "rrb"))
+    //     {
+    //         reverse_rotate(&b,"rrb ");
+    //     }
+    //     j++;
+    // }
+    // print_stack(a);
+    // printf("sqc\n");
+    // print_stack(b);
 // }
