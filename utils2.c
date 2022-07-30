@@ -1,87 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/28 06:46:18 by hlachkar          #+#    #+#             */
+/*   Updated: 2022/07/30 03:22:30 by hlachkar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-int getindex(pile a, int val)
+void	pb(t_list **lst1, t_list **lst2)
 {
-    int i;
-    pile head;
+	t_list	*temp;
 
-    head = a;
-    i = 1;
-    while(head->i != val && head->next)
+	if (*lst1)
     {
-        i++;
-        head = head->next;
+        ft_lstadd_front (lst2, ft_lstnew((*lst1)->content));
+        temp = *lst1;
+		*lst1 = (*lst1)->next;
+		free(temp);
+        write (1, "pb\n", 3);
     }
-    return(i);
 }
 
-int lst_size(pile b)
+void	pa(t_list **lst1, t_list **lst2)
 {
-    int len;
+	t_list	*temp;
 
-    len = 0;
-    while(!stack_vide(b))
+	if (*lst1)
     {
-        len++;
-        b = b->next;
-    }
-    return len;
+        ft_lstadd_front (lst2, ft_lstnew((*lst1)->content));
+        temp = *lst1;
+		*lst1 = (*lst1)->next;
+		free(temp);
+		write (1, "pa\n", 3);
+	}
 }
 
-int get_min_value(pile a)
-{
-    int i;
-    int s;
-    pile head;
 
-    head = a;
-    s = a->i;
-    i = 1;
-    while(!stack_vide(a))
-    {
-        if(a->i < s)
-            s = a->i;
-        a = a->next;  
-    }
-    return(s);
+void	sb(t_list **lst)
+{
+	int	size;
+	t_list	*temp;
+    t_list	*head;
+
+	size = ft_lstsize (*lst);
+	if (size >= 2)
+	{
+        head = *lst;
+        temp = (*lst)->next;
+        ft_lstadd_front (lst, ft_lstnew(head->next->content));
+        head->next = head->next->next;
+		free(temp);
+        write (1, "sb\n", 3);
+	}
 }
 
-int getmaxindex(pile a)
+void	sa(t_list **lst)
 {
-    int i;
-    int s;
-    pile head;
+	int	size;
+	t_list	*temp;
+    t_list	*head;
 
-    head = a;
-    s = a->i;
-    i = 1;
-    while(!stack_vide(a))
-    {
-        if(a->i >= s)
-            s = a->i;
-        a = a->next;  
-    }
-    while(head->i != s)
-    {
-        i++;
-        head = head->next;
-    }
-    return(i);
+	size = ft_lstsize (*lst);
+	if (size >= 2)
+	{
+		head = *lst;
+        temp = (*lst)->next;
+        ft_lstadd_front (lst, ft_lstnew(head->next->content));
+        head->next = head->next->next;
+		free(temp);
+        write (1, "sa\n", 3);
+	}
 }
 
-void ft_free(pile *a)
+void	ss(t_list **lst1, t_list **lst2)
 {
-    int i;
-    pile *temp;
+	int	size1;
+	int	size2;
+	int	temp1;
+	int	temp2;
 
-    temp = a;
-    i = 0;
-    while(!stack_vide(*a))
-    {
-        *a = (*a)->next;
-        free(*temp);
-        temp = a;
-        i++;
-    }
+	size1 = ft_lstsize (*lst1);
+	size2 = ft_lstsize (*lst2);
+	if (size1 >= 2)
+		sa (lst1);
+	if (size2 >= 2)
+		sb (lst2);
+	write (1, "ss\n", 3);
 }

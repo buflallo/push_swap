@@ -1,78 +1,31 @@
-#ifndef push_swap_h
-# define push_swap_h
-
-# include <string.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include "get_next_line.h"
-
-    typedef struct pileElement
-    {
-        int i;
-        struct pileElement *next;
-    }pileElement, *pile;
-
-    typedef enum
-    {
-        false,
-        true
-    }Bool;
-
-    
-
-void    ft_result(pile a);
-Bool	stack_vide(pile st);
-pile    new_pile(void);
-pile	push_stack(pile st, int x);
-pile    pop_stack(pile st);
-int     lst_size(pile b);
-int     getindex(pile a, int val);
-pile    get_last(pile a);
-int     getmaxindex(pile a);
-void    pushmax(pile *a, pile *b, int argc);
-int     get_min_index(pile a);
-void    push_to_stack(pile *a, pile *b, char *str);
-void    ft_free(pile *a);
-int     get_min_value(pile a);
-void    argv_to_a(pile *a, int argc, char **argv);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/28 03:42:59 by hlachkar          #+#    #+#             */
+/*   Updated: 2022/07/29 10:15:03 by hlachkar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include "Libft/libft.h"
 
-pile    rotate_stack(pile st, char *str);
-void    reverse_rotate(pile *a, char *str);
-pile    swap_stack(pile st, char *str);
-
-
-
-void    sorttwo(pile *a);
-pile    sorttree(pile st);
-pile    prep_four(pile a);
-void    sortfour(pile *a, pile *b);
-pile    prep_five(pile a);
-void    sortfive(pile *a, pile *b);
-
-
-
-void    ft_check_error(pile a, int argc);
-void    ft_print_error();
-void    getcunk(pile cp, int argc, int *p, char **argv);
-void    push_back_to_a(pile *a, pile *b, int argc, int div);
-void    fill_a(pile *a, pile *b, int argc);
-void    mini_sort(int argc, pile *a, pile *b);
-void    big_sort(char **argv, pile *a, pile *b);
-void    insertionsort_print(pile *a, pile *b, int argc);
-void    push_chunks_to_b(pile *a, pile *b, char **argv, int *p);
-void    pushchunk(pile *a, pile *b, int j, int temp);
-int     get_closer(int hold1,int hold2);
-
-
-int		ft_atoi(const char *str);
-void    ft_putstr(char *str, int fd);
-void    print_stack(pile st);
-void    insertionsort(pile *a, pile *b, int argc);
-int     count_argc(char **argv);
-
+void	ra(t_list **lst);
+void	rb(t_list **lst);
+void	rrb(t_list **lst);
+void	rra(t_list **lst);
+void	sa(t_list **lst);
+void	sb(t_list **lst);
+void	pa(t_list **lst1, t_list **lst2);
+void	pb(t_list **lst1, t_list **lst2);
+void	ss(t_list **lst1, t_list **lst2);
+void	rrr(t_list **lst, t_list **lst2);
+void	rr(t_list **lst);
 
 
 #endif
