@@ -6,7 +6,7 @@
 /*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 03:43:07 by hlachkar          #+#    #+#             */
-/*   Updated: 2022/07/30 04:37:29 by hlachkar         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:57:19 by hlachkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,25 @@ void print_stack(t_list *stack)
     }
     printf("\n");
 }
+
+int check(char *c)
+{
+    int i;
+
+    i = 0;
+    if (c[i] == '-' || c[i] == '+')
+        i++;
+    if (c[i] == '\0')
+        return (0);
+    while (c[i])
+    {
+        if (!ft_isdigit(c[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 void init_stack(t_list **stack, int argc, char **av)
 {
     int i;
@@ -48,9 +67,9 @@ void init_stack(t_list **stack, int argc, char **av)
 
     i = 1;
     *stack = NULL;
-    while (i < argc && (ft_atoi(av[i]) != 0 || av[i][0] == '0'))
+    while (i < argc && av[i] && check(av[i]) && (ft_atoi(av[i]) != 0 || (av[i][0] != '0' || ft_strncmp(av[i], "-0", 3) || ft_strncmp(av[i], "-0", 3))))
     {
-        if ((ft_atoi(av[i]) <= 0  && av[i][0] != '-') || (ft_atoi(av[i]) >= 0  && av[i][0] == '-') || (ft_atoi(av[i]) == -1 && strcmp(av[i], "-1") != 0))
+        if ((ft_atoi(av[i]) < 0  && av[i][0] != '-') || (ft_atoi(av[i]) > 0  && av[i][0] == '-') || (ft_atoi(av[i]) == -1 && ft_strncmp(av[i], "-1", 3) != 0))
         {
             write(2,"Error\n", 6);
             exit(1);
@@ -59,7 +78,7 @@ void init_stack(t_list **stack, int argc, char **av)
         ft_lstadd_back(stack, ft_lstnew(content));
         i++;
     }
-    if (av[i] && ft_atoi(av[i]) == 0 && av[i][0] != '0')
+    if (av[i] && (!check(av[i]) || (ft_atoi(av[i]) == 0 && (av[i][0] != '0' || ft_strncmp(av[i], "-0", 3) || ft_strncmp(av[i], "-0", 3)) )))
     {
         write(2,"Error\n", 6);
         exit(1);
@@ -325,7 +344,7 @@ int main(int argc, char *av[])
     check_dup(lst);
     if (ft_lstsize(lst) <= 5)
     {
-        if (ft_lstsize(lst) == 2 && not_sorted(lst))
+        if (ft_lstsize(lst) == 2)
             sa(&lst);
         else
             sort4_5(&lst, ft_lstsize(lst), &lst2);
