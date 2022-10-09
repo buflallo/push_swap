@@ -6,7 +6,7 @@
 /*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 03:43:07 by hlachkar          #+#    #+#             */
-/*   Updated: 2022/10/04 20:57:19 by hlachkar         ###   ########.fr       */
+/*   Updated: 2022/10/09 04:32:20 by hlachkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,14 +198,10 @@ int not_sorted(t_list *lst)
 int	get_pos(t_list *lst, int min, int max)
 {
 	int	pos1;
-    int	pos2;
     int index;
-    int size;
 
 	pos1 = 0;
-    pos2 = 0;
     index = 0;
-    size = ft_lstsize(lst);
 	while (lst)
 	{
 		if (lst->content >= min && lst->content <= max)
@@ -255,7 +251,6 @@ void	put_back(t_list **lst, t_list **lst2)
 {
 	t_list	*lastnode;
     int     tmp;
-    int i = 0;
 
 	lastnode = ft_lstlast(*lst);
     tmp = lastnode->content;
@@ -268,7 +263,7 @@ void	put_back(t_list **lst, t_list **lst2)
 				pa (lst2, lst);
             }
 			else if ((*lst2)->content < (*lst)->content
-				&& ((*lst2)->content > lastnode->content) || tmp == lastnode->content )
+				&& (((*lst2)->content > lastnode->content) || tmp == lastnode->content ))
 			{
 				pa (lst2, lst);
 				ra (lst);
@@ -292,7 +287,7 @@ void	put_back(t_list **lst, t_list **lst2)
 void	sort(t_list **lst, t_list **lst2)
 {
 	int		size;
-	t_list	*lastdup;
+	// t_list	*lastdup;
 
     size = ft_lstsize(*lst);
 	while (size > 5)
@@ -322,14 +317,14 @@ int check_dup(t_list *lst)
 		}
 		lst = lst->next;
 	}
+    return(0);
 }
 
 int main(int argc, char *av[])
 {
     t_list *lst;
     t_list *lst2;
-    int i = 1;
-    t_list *stack;
+    // t_list *stack;
 
     lst = NULL;
     lst2 = NULL;

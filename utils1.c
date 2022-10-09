@@ -6,7 +6,7 @@
 /*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 03:43:10 by hlachkar          #+#    #+#             */
-/*   Updated: 2022/07/30 03:20:41 by hlachkar         ###   ########.fr       */
+/*   Updated: 2022/10/09 04:30:23 by hlachkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ra(t_list **lst)
 void	rrb(t_list **lst)
 {
 	t_list	*last;
-	t_list	*head;
 	t_list *tmp;
 
 	last = ft_lstBeforLast(*lst);
@@ -60,7 +59,6 @@ void	rrb(t_list **lst)
 void	rra(t_list **lst)
 {
 	t_list	*last;
-	t_list	*head;
 	t_list *tmp;
 
 	last = ft_lstBeforLast(*lst);
@@ -74,7 +72,6 @@ void	rra(t_list **lst)
 void	rr_sl(t_list **lst)
 {
 	t_list	*last;
-	t_list	*head;
 	t_list *tmp;
 
 	last = ft_lstBeforLast(*lst);

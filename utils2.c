@@ -6,7 +6,7 @@
 /*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 06:46:18 by hlachkar          #+#    #+#             */
-/*   Updated: 2022/07/30 03:22:30 by hlachkar         ###   ########.fr       */
+/*   Updated: 2022/10/09 04:28:21 by hlachkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ void	ss(t_list **lst1, t_list **lst2)
 {
 	int	size1;
 	int	size2;
-	int	temp1;
-	int	temp2;
 
 	size1 = ft_lstsize (*lst1);
 	size2 = ft_lstsize (*lst2);
