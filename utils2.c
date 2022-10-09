@@ -6,7 +6,7 @@
 /*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 06:46:18 by hlachkar          #+#    #+#             */
-/*   Updated: 2022/10/09 04:28:21 by hlachkar         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:30:51 by hlachkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	pb(t_list **lst1, t_list **lst2)
 	t_list	*temp;
 
 	if (*lst1)
-    {
-        ft_lstadd_front (lst2, ft_lstnew((*lst1)->content));
-        temp = *lst1;
+	{
+		ft_lstadd_front (lst2, ft_lstnew((*lst1)->content));
+		temp = *lst1;
 		*lst1 = (*lst1)->next;
 		free(temp);
-        write (1, "pb\n", 3);
-    }
+		write (1, "pb\n", 3);
+	}
 }
 
 void	pa(t_list **lst1, t_list **lst2)
@@ -31,49 +31,48 @@ void	pa(t_list **lst1, t_list **lst2)
 	t_list	*temp;
 
 	if (*lst1)
-    {
-        ft_lstadd_front (lst2, ft_lstnew((*lst1)->content));
-        temp = *lst1;
+	{
+		ft_lstadd_front (lst2, ft_lstnew((*lst1)->content));
+		temp = *lst1;
 		*lst1 = (*lst1)->next;
 		free(temp);
 		write (1, "pa\n", 3);
 	}
 }
 
-
 void	sb(t_list **lst)
 {
-	int	size;
+	int		size;
 	t_list	*temp;
-    t_list	*head;
-
-	size = ft_lstsize (*lst);
-	if (size >= 2)
-	{
-        head = *lst;
-        temp = (*lst)->next;
-        ft_lstadd_front (lst, ft_lstnew(head->next->content));
-        head->next = head->next->next;
-		free(temp);
-        write (1, "sb\n", 3);
-	}
-}
-
-void	sa(t_list **lst)
-{
-	int	size;
-	t_list	*temp;
-    t_list	*head;
+	t_list	*head;
 
 	size = ft_lstsize (*lst);
 	if (size >= 2)
 	{
 		head = *lst;
-        temp = (*lst)->next;
-        ft_lstadd_front (lst, ft_lstnew(head->next->content));
-        head->next = head->next->next;
+		temp = (*lst)->next;
+		ft_lstadd_front (lst, ft_lstnew(head->next->content));
+		head->next = head->next->next;
 		free(temp);
-        write (1, "sa\n", 3);
+		write (1, "sb\n", 3);
+	}
+}
+
+void	sa(t_list **lst)
+{
+	int		size;
+	t_list	*temp;
+	t_list	*head;
+
+	size = ft_lstsize (*lst);
+	if (size >= 2)
+	{
+		head = *lst;
+		temp = (*lst)->next;
+		ft_lstadd_front (lst, ft_lstnew(head->next->content));
+		head->next = head->next->next;
+		free(temp);
+		write (1, "sa\n", 3);
 	}
 }
 

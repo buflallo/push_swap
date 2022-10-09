@@ -6,7 +6,7 @@
 /*   By: hlachkar <hlachkar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 03:43:10 by hlachkar          #+#    #+#             */
-/*   Updated: 2022/10/09 04:30:23 by hlachkar         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:32:37 by hlachkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rb(t_list **lst)
 {
 	t_list	*last;
 	t_list	*head;
-	t_list *tmp;
+	t_list	*tmp;
 
 	last = ft_lstnew((*lst)->content);
 	head = (*lst)->next;
@@ -31,7 +31,7 @@ void	ra(t_list **lst)
 {
 	t_list	*last;
 	t_list	*head;
-	t_list *tmp;
+	t_list	*tmp;
 
 	last = ft_lstnew((*lst)->content);
 	head = (*lst)->next;
@@ -45,9 +45,9 @@ void	ra(t_list **lst)
 void	rrb(t_list **lst)
 {
 	t_list	*last;
-	t_list *tmp;
+	t_list	*tmp;
 
-	last = ft_lstBeforLast(*lst);
+	last = ft_lstbeforlast(*lst);
 	tmp = ft_lstnew(last->next->content);
 	free(last->next);
 	last->next = NULL;
@@ -55,13 +55,12 @@ void	rrb(t_list **lst)
 	write (1, "rrb\n", 4);
 }
 
-
 void	rra(t_list **lst)
 {
 	t_list	*last;
-	t_list *tmp;
+	t_list	*tmp;
 
-	last = ft_lstBeforLast(*lst);
+	last = ft_lstbeforlast(*lst);
 	tmp = ft_lstnew(last->next->content);
 	free(last->next);
 	last->next = NULL;
@@ -72,19 +71,11 @@ void	rra(t_list **lst)
 void	rr_sl(t_list **lst)
 {
 	t_list	*last;
-	t_list *tmp;
+	t_list	*tmp;
 
-	last = ft_lstBeforLast(*lst);
+	last = ft_lstbeforlast(*lst);
 	tmp = ft_lstnew(last->next->content);
 	free(last->next);
 	last->next = NULL;
 	ft_lstadd_front(lst, tmp);
-	// write (1, "rra\n", 4);
-}
-
-void rrr(t_list **lst, t_list **lst2)
-{
-	rr_sl(lst);
-	rr_sl(lst2);
-	write (1, "rrr\n", 4);
 }
